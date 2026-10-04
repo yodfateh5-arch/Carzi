@@ -1,0 +1,342 @@
+{
+  "generatedAt": "2026-10-04T01:41:35.965Z",
+  "results": [
+    {
+      "id": 0,
+      "name": "First Contact",
+      "solved": true,
+      "shots": 1,
+      "score": 3000,
+      "kills": 1,
+      "creatures": 1,
+      "destroyed": 0,
+      "blocks": 3,
+      "line": [
+        {
+          "angle": 6,
+          "power": 1,
+          "label": "6° @ 100%"
+        }
+      ],
+      "elapsedMs": 229,
+      "bestValue": 1100003000,
+      "partial": null
+    },
+    {
+      "id": 1,
+      "name": "Glass House",
+      "solved": true,
+      "shots": 2,
+      "score": 3300,
+      "kills": 2,
+      "creatures": 2,
+      "destroyed": 2,
+      "blocks": 6,
+      "line": [
+        {
+          "angle": 6,
+          "power": 1,
+          "label": "6° @ 100%"
+        },
+        {
+          "angle": 6,
+          "power": 1,
+          "label": "6° @ 100%"
+        }
+      ],
+      "elapsedMs": 3517,
+      "bestValue": 2100203300,
+      "partial": null
+    },
+    {
+      "id": 2,
+      "name": "Twin Towers",
+      "solved": true,
+      "shots": 2,
+      "score": 3000,
+      "kills": 2,
+      "creatures": 2,
+      "destroyed": 0,
+      "blocks": 12,
+      "line": [
+        {
+          "angle": 26,
+          "power": 1,
+          "label": "26° @ 100%"
+        },
+        {
+          "angle": 41,
+          "power": 1,
+          "label": "41° @ 100%"
+        }
+      ],
+      "elapsedMs": 8845,
+      "bestValue": 2100003000,
+      "partial": null
+    },
+    {
+      "id": 3,
+      "name": "Stone Fort",
+      "solved": true,
+      "shots": 1,
+      "score": 3000,
+      "kills": 1,
+      "creatures": 1,
+      "destroyed": 0,
+      "blocks": 7,
+      "line": [
+        {
+          "angle": 31,
+          "power": 1,
+          "label": "31° @ 100%"
+        }
+      ],
+      "elapsedMs": 139,
+      "bestValue": 1100003000,
+      "partial": null
+    },
+    {
+      "id": 4,
+      "name": "Scaffold",
+      "solved": true,
+      "shots": 2,
+      "score": 3000,
+      "kills": 2,
+      "creatures": 2,
+      "destroyed": 0,
+      "blocks": 9,
+      "line": [
+        {
+          "angle": 41,
+          "power": 1,
+          "label": "41° @ 100%"
+        },
+        {
+          "angle": 51,
+          "power": 1,
+          "label": "51° @ 100%"
+        }
+      ],
+      "elapsedMs": 7717,
+      "bestValue": 2100003000,
+      "partial": null
+    },
+    {
+      "id": 5,
+      "name": "TNT Yard",
+      "solved": true,
+      "shots": 2,
+      "score": 3100,
+      "kills": 2,
+      "creatures": 2,
+      "destroyed": 1,
+      "blocks": 7,
+      "line": [
+        {
+          "angle": 26,
+          "power": 1,
+          "label": "26° @ 100%"
+        },
+        {
+          "angle": 51,
+          "power": 1,
+          "detonate": true,
+          "label": "51° @ 100% detonate-on-contact"
+        }
+      ],
+      "elapsedMs": 3423,
+      "bestValue": 2100103100,
+      "partial": null
+    },
+    {
+      "id": 6,
+      "name": "Ice Palace",
+      "solved": true,
+      "shots": 3,
+      "score": 4050,
+      "kills": 3,
+      "creatures": 3,
+      "destroyed": 7,
+      "blocks": 12,
+      "line": [
+        {
+          "angle": 30.5,
+          "power": 0.85,
+          "splitAtX": 850,
+          "label": "30.5° @ 85% split@x=850"
+        },
+        {
+          "angle": 11,
+          "power": 1,
+          "label": "11° @ 100%"
+        },
+        {
+          "angle": 26,
+          "power": 1,
+          "label": "26° @ 100%"
+        }
+      ],
+      "elapsedMs": 25328,
+      "bestValue": 3100704050,
+      "partial": null
+    },
+    {
+      "id": 7,
+      "name": "Bunker",
+      "solved": true,
+      "shots": 2,
+      "score": 4750,
+      "kills": 3,
+      "creatures": 3,
+      "destroyed": 5,
+      "blocks": 7,
+      "line": [
+        {
+          "angle": 31,
+          "power": 0.85,
+          "detonate": true,
+          "label": "31° @ 85% detonate-on-contact"
+        },
+        {
+          "angle": 61,
+          "power": 1,
+          "label": "61° @ 100%"
+        }
+      ],
+      "elapsedMs": 6314,
+      "bestValue": 3100504750,
+      "partial": null
+    },
+    {
+      "id": 8,
+      "name": "Split Decision",
+      "solved": true,
+      "shots": 2,
+      "score": 4300,
+      "kills": 3,
+      "creatures": 3,
+      "destroyed": 2,
+      "blocks": 9,
+      "line": [
+        {
+          "angle": 26,
+          "power": 1,
+          "splitAtX": 850,
+          "label": "26° @ 100% split@x=850"
+        },
+        {
+          "angle": 21,
+          "power": 1,
+          "splitAtX": 1150,
+          "label": "21° @ 100% split@x=1150"
+        }
+      ],
+      "elapsedMs": 37400,
+      "bestValue": 3100204300,
+      "partial": null
+    },
+    {
+      "id": 9,
+      "name": "Great Wall",
+      "solved": true,
+      "shots": 3,
+      "score": 3650,
+      "kills": 3,
+      "creatures": 3,
+      "destroyed": 4,
+      "blocks": 18,
+      "line": [
+        {
+          "angle": 31,
+          "power": 1,
+          "label": "31° @ 100%"
+        },
+        {
+          "angle": 64,
+          "power": 1,
+          "label": "64° @ 100%"
+        },
+        {
+          "angle": 41,
+          "power": 0.85,
+          "detonate": true,
+          "label": "41° @ 85% detonate-on-contact"
+        }
+      ],
+      "elapsedMs": 23263,
+      "bestValue": 3100403650,
+      "partial": null
+    },
+    {
+      "id": 10,
+      "name": "Switchback",
+      "solved": true,
+      "shots": 3,
+      "score": 4750,
+      "kills": 3,
+      "creatures": 3,
+      "destroyed": 5,
+      "blocks": 7,
+      "line": [
+        {
+          "angle": 30,
+          "power": 1,
+          "label": "30° @ 100%"
+        },
+        {
+          "angle": 51,
+          "power": 1,
+          "splitAtX": 1000,
+          "label": "51° @ 100% split@x=1000"
+        },
+        {
+          "angle": 26,
+          "power": 0.85,
+          "detonate": true,
+          "label": "26° @ 85% detonate-on-contact"
+        }
+      ],
+      "elapsedMs": 33119,
+      "bestValue": 3100504750,
+      "partial": null
+    },
+    {
+      "id": 11,
+      "name": "Fortfall Keep",
+      "solved": true,
+      "shots": 4,
+      "score": 6500,
+      "kills": 4,
+      "creatures": 4,
+      "destroyed": 11,
+      "blocks": 14,
+      "line": [
+        {
+          "angle": 33,
+          "power": 1,
+          "splitAtX": 1000,
+          "label": "33° @ 100% split@x=1000"
+        },
+        {
+          "angle": 31,
+          "power": 0.85,
+          "detonate": true,
+          "label": "31° @ 85% detonate-on-contact"
+        },
+        {
+          "angle": 26,
+          "power": 1,
+          "label": "26° @ 100%"
+        },
+        {
+          "angle": 16,
+          "power": 0.85,
+          "label": "16° @ 85%"
+        }
+      ],
+      "elapsedMs": 48973,
+      "bestValue": 4101106500,
+      "partial": null
+    }
+  ]
+}
