@@ -77,7 +77,7 @@ class Game {
     this.renderer.camera.snap();
     this.aim = { angle: this.level.id % 2 ? 34 : 28, power: 1 };
     this.showScreen(null);
-    this.updateHud();
+    this.updateHud(true);
     this.setHint(this.level.hint);
   }
 
@@ -174,12 +174,13 @@ class Game {
   }
 
   onKey(e) {
+    this.sfx.resume();
     if (e.key === 'm') { this.toggleMute(); return; }
     if (e.key === 'Escape') { this.showScreen('levels'); return; }
+    if (e.key === 'r' && this.sim) { this.restart(); return; }
+    if (e.key === 'n' && this.sim) { this.nextLevel(); return; }
     if (this.phase !== 'playing') return;
     const sim = this.sim;
-    if (e.key === 'r') { this.restart(); return; }
-    if (e.key === 'n') { this.nextLevel(); return; }
     if (sim.phase === 'fly') {
       if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); sim.triggerAbility(); }
       return;
@@ -362,31 +363,49 @@ class Game {
     el.classList.toggle('shown', !!text);
   }
 
-  updateHud() {
+  updateHud(force = false) {
     const sim = this.sim;
     if (!sim) return;
-    $('level-name').textContent = `${this.levelIndex + 1}. ${this.level.name}`;
-    $('score').textContent = sim.score.toLocaleString();
-    const baddies = $('baddies');
-    baddies.innerHTML = Array.from({ length: sim.creatureTotal }, (_, i) =>
-      `<span class="pip ${i < sim.creatureTotal - sim.aliveCreatures ? 'dead' : ''}"></span>`).join('');
-    const bar = $('ammo-bar');
-    bar.innerHTML = '';
-    this.level.ammo.forEach((key, i) => {
-      const el = document.createElement('span');
-      el.className = 'ammo';
-      if (i < sim.ammoIndex) el.classList.add('spent');
-      else if (i === sim.ammoIndex && sim.phase !== 'won' && sim.phase !== 'lost') el.classList.add('current');
-      el.dataset.kind = key;
-      el.title = key;
-      el.textContent = { stone: '●', bomb: '✸', splitter: '❋', boulder: '⬤' }[key] ?? '●';
-      bar.appendChild(el);
-    });
-    const meta = $('aim-meta');
+    const hud = (this._hud ??= {});
+    const title = `${this.levelIndex + 1}. ${this.level.name}`;
+    if (force || hud.title !== title) {
+      $('level-name').textContent = title;
+      hud.title = title;
+    }
+    if (force || hud.score !== sim.score) {
+      $('score').textContent = sim.score.toLocaleString();
+      hud.score = sim.score;
+    }
+    const dead = sim.creatureTotal - sim.aliveCreatures;
+    if (force || hud.dead !== dead) {
+      $('baddies').innerHTML = Array.from({ length: sim.creatureTotal }, (_, i) =>
+        `<span class="pip ${i < dead ? 'dead' : ''}"></span>`).join('');
+      hud.dead = dead;
+    }
+    const spentKey = `${sim.ammoIndex}/${sim.phase}`;
+    if (force || hud.ammo !== spentKey) {
+      const bar = $('ammo-bar');
+      bar.innerHTML = '';
+      this.level.ammo.forEach((key, i) => {
+        const el = document.createElement('span');
+        el.className = 'ammo';
+        if (i < sim.ammoIndex) el.classList.add('spent');
+        else if (i === sim.ammoIndex && sim.phase !== 'won' && sim.phase !== 'lost') el.classList.add('current');
+        el.dataset.kind = key;
+        el.title = key;
+        el.textContent = { stone: '●', bomb: '✸', splitter: '❋', boulder: '⬤' }[key] ?? '●';
+        bar.appendChild(el);
+      });
+      hud.ammo = spentKey;
+    }
     const v = sim.aimVector();
-    meta.textContent = sim.phase === 'aim'
+    const meta = sim.phase === 'aim'
       ? (v ? `${Math.round(v.power * 100)}% power` : 'pull back to aim')
       : sim.phase === 'fly' && sim.abilityReady ? 'tap to trigger ability' : '';
+    if (force || hud.meta !== meta) {
+      $('aim-meta').textContent = meta;
+      hud.meta = meta;
+    }
   }
 
   // ---- loop ---------------------------------------------------------------

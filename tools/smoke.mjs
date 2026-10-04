@@ -235,5 +235,34 @@ game.renderer.frame(game.level, 'follow', { x: 900, y: 400 });
 game.renderer.frame(game.level, 'overview');
 check('camera framing works in both modes', true);
 
+console.log('\n▸ vendored browser engine (the exact file index.html loads)');
+{
+  // Load vendor/matter.min.js the way a <script> tag does, then re-import the
+  // game modules with a cache-busting query so src/engine.js picks up the
+  // browser global instead of the npm package.
+  const vm = await import('node:vm');
+  const code = fs.readFileSync(path.join(ROOT, 'vendor/matter.min.js'), 'utf8');
+  const sandbox = { console, window: undefined, self: undefined, document: undefined };
+  sandbox.window = sandbox;
+  sandbox.self = sandbox;
+  vm.createContext(sandbox);
+  vm.runInContext(code, sandbox, { filename: 'vendor/matter.min.js' });
+  check('vendored build registers a global Matter', !!sandbox.Matter?.Engine && !!sandbox.Matter?.Bodies);
+  check('vendored build is the same major version as package.json', String(sandbox.Matter?.version).startsWith('0.'));
+
+  globalThis.Matter = sandbox.Matter;
+  const simMod = await import('../src/sim.js?vendor=1');
+  const { LEVELS } = await import('../src/levels.js');
+  const sim = simMod.createSim(LEVELS[5]);
+  sim.drainEvents();
+  const a = simMod.solveAim(30, 1);
+  sim.aim(a.dragX, a.dragY);
+  sim.launch();
+  for (let i = 0; i < 400 && sim.phase === 'fly'; i++) sim.step();
+  const finite = sim.blocks.every((b) => Number.isFinite(b.body.position.x));
+  check('a full shot simulates on the vendored build', finite && (sim.phase === 'aim' || sim.phase === 'won'), `phase=${sim.phase}`);
+  check('damage/score still applied on the vendored build', sim.score >= 0 && finite);
+}
+
 console.log(`\n${failures === 0 ? 'PASS' : 'FAIL'} — ${failures} failure(s)`);
 process.exit(failures ? 1 : 0);
