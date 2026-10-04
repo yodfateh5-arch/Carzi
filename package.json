@@ -1,0 +1,30 @@
+{
+  "name": "fortfall",
+  "version": "1.0.0",
+  "description": "FORTFALL \u2014 a physics demolitions puzzler for the browser",
+  "main": "index.js",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node tools/tests.mjs",
+    "smoke": "node tools/smoke.mjs",
+    "probe": "node tools/simulate.mjs probe",
+    "verify": "node tools/simulate.mjs verify",
+    "solve": "node tools/simulate.mjs solve all --out tools/level-report.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yodfateh5-arch/Carzi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yodfateh5-arch/Carzi/issues"
+  },
+  "homepage": "https://github.com/yodfateh5-arch/Carzi#readme",
+  "dependencies": {
+    "matter-js": "^0.20.0"
+  },
+  "type": "module",
+  "private": true
+}
